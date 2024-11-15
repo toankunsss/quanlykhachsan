@@ -86,11 +86,41 @@
     <Compile Include="Forms\LapPhieuDVForm.Designer.cs">
       <DependentUpon>LapPhieuDVForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LoaiPhongForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoaiPhongForm.Designer.cs">
+      <DependentUpon>LoaiPhongForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PhieuDatPhongForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\PhieuDatPhongForm.Designer.cs">
       <DependentUpon>PhieuDatPhongForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuanLyDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuanLyDV.Designer.cs">
+      <DependentUpon>QuanLyDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuanLyKhach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuanLyKhach.Designer.cs">
+      <DependentUpon>QuanLyKhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuanLyNhanVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuanLyNhanVienForm.Designer.cs">
+      <DependentUpon>QuanLyNhanVienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuanLyPhongForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuanLyPhongForm.Designer.cs">
+      <DependentUpon>QuanLyPhongForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -110,8 +140,14 @@
     <EmbeddedResource Include="Forms\LapPhieuDVForm.resx">
       <DependentUpon>LapPhieuDVForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoaiPhongForm.resx">
+      <DependentUpon>LoaiPhongForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PhieuDatPhongForm.resx">
       <DependentUpon>PhieuDatPhongForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuanLyPhongForm.resx">
+      <DependentUpon>QuanLyPhongForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
