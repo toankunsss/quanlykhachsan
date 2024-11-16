@@ -146,6 +146,15 @@
     <EmbeddedResource Include="Forms\PhieuDatPhongForm.resx">
       <DependentUpon>PhieuDatPhongForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuanLyDV.resx">
+      <DependentUpon>QuanLyDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuanLyKhach.resx">
+      <DependentUpon>QuanLyKhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuanLyNhanVienForm.resx">
+      <DependentUpon>QuanLyNhanVienForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\QuanLyPhongForm.resx">
       <DependentUpon>QuanLyPhongForm.cs</DependentUpon>
     </EmbeddedResource>

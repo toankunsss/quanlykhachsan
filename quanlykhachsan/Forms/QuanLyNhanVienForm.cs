@@ -16,5 +16,15 @@ namespace quanlykhachsan.Forms
         {
             InitializeComponent();
         }
+
+        private void guna2Panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

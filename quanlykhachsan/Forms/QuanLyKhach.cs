@@ -16,5 +16,10 @@ namespace quanlykhachsan.Forms
         {
             InitializeComponent();
         }
+
+        private void QuanLyKhach_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
