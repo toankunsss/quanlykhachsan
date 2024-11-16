@@ -75,20 +75,4 @@ namespace quanlykhachsan.DatabaseConect
         }
     }
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            ConnectDb db = new ConnectDb();
-
-            if (db.TestConnection())
-            {
-                Console.WriteLine("Cơ sở dữ liệu sẵn sàng để sử dụng!");
-            }
-            else
-            {
-                Console.WriteLine("Không thể kết nối đến cơ sở dữ liệu. Kiểm tra lại cấu hình!");
-            }
-        }
-    }
 }
