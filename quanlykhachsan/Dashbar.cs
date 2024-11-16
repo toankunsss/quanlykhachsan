@@ -19,6 +19,8 @@ namespace quanlykhachsan
         public Dashbar()
         {
             InitializeComponent();
+            OpenChildForm(new Forms.HomeForm());
+
         }
 
         private void guna2HtmlLabel2_Click(object sender, EventArgs e)
@@ -140,6 +142,7 @@ namespace quanlykhachsan
 
         private void hoadonBtn_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Forms.LapHoaDon());
 
         }
 
@@ -151,21 +154,25 @@ namespace quanlykhachsan
 
         private void roomBtn_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Forms.QuanLyPhongForm());
 
         }
 
         private void clientBtn_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Forms.QuanLyKhach());
 
         }
 
         private void userBtn_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Forms.QuanLyNhanVienForm());
 
         }
 
         private void serviceBtn_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Forms.QuanLyDV());
 
         }
 

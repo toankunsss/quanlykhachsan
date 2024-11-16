@@ -77,9 +77,8 @@
             // 
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.guna2DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,10 +102,10 @@
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(0, 91);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(4, 91);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(334, 402);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(330, 402);
             this.guna2DataGridView1.TabIndex = 16;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -149,8 +148,7 @@
             // 
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            this.guna2DataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.guna2DataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
@@ -311,8 +309,7 @@
             // 
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.guna2DataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.guna2DataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
@@ -393,6 +390,8 @@
             // 
             // guna2Panel2
             // 
+            this.guna2Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2Panel2.BorderColor = System.Drawing.Color.Brown;
             this.guna2Panel2.BorderThickness = 1;
             this.guna2Panel2.Controls.Add(this.guna2Button3);

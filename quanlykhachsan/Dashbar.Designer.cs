@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashbar));
             this.sliderContainer = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.homeButon = new Guna.UI2.WinForms.Guna2Button();
             this.exitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.serviceBtn = new Guna.UI2.WinForms.Guna2Button();
             this.userBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -46,7 +47,6 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SidebarTime = new System.Windows.Forms.Timer(this.components);
             this.panelDesktopRFoot = new Guna.UI2.WinForms.Guna2Panel();
-            this.homeButon = new Guna.UI2.WinForms.Guna2Button();
             this.sliderContainer.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
@@ -77,6 +77,29 @@
             this.sliderContainer.Name = "sliderContainer";
             this.sliderContainer.Size = new System.Drawing.Size(235, 544);
             this.sliderContainer.TabIndex = 1;
+            // 
+            // homeButon
+            // 
+            this.homeButon.BackColor = System.Drawing.Color.Transparent;
+            this.homeButon.BorderColor = System.Drawing.Color.Transparent;
+            this.homeButon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.homeButon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.homeButon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.homeButon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.homeButon.Dock = System.Windows.Forms.DockStyle.Top;
+            this.homeButon.FillColor = System.Drawing.Color.Transparent;
+            this.homeButon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.homeButon.ForeColor = System.Drawing.Color.White;
+            this.homeButon.Image = ((System.Drawing.Image)(resources.GetObject("homeButon.Image")));
+            this.homeButon.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.homeButon.ImageSize = new System.Drawing.Size(25, 25);
+            this.homeButon.Location = new System.Drawing.Point(0, 476);
+            this.homeButon.Name = "homeButon";
+            this.homeButon.Size = new System.Drawing.Size(235, 43);
+            this.homeButon.TabIndex = 15;
+            this.homeButon.Text = "     Home";
+            this.homeButon.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.homeButon.Click += new System.EventHandler(this.homeButon_Click);
             // 
             // exitBtn
             // 
@@ -344,29 +367,6 @@
             this.panelDesktopRFoot.Name = "panelDesktopRFoot";
             this.panelDesktopRFoot.Size = new System.Drawing.Size(810, 526);
             this.panelDesktopRFoot.TabIndex = 3;
-            // 
-            // homeButon
-            // 
-            this.homeButon.BackColor = System.Drawing.Color.Transparent;
-            this.homeButon.BorderColor = System.Drawing.Color.Transparent;
-            this.homeButon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.homeButon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.homeButon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.homeButon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.homeButon.Dock = System.Windows.Forms.DockStyle.Top;
-            this.homeButon.FillColor = System.Drawing.Color.Transparent;
-            this.homeButon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.homeButon.ForeColor = System.Drawing.Color.White;
-            this.homeButon.Image = ((System.Drawing.Image)(resources.GetObject("homeButon.Image")));
-            this.homeButon.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.homeButon.ImageSize = new System.Drawing.Size(25, 25);
-            this.homeButon.Location = new System.Drawing.Point(0, 476);
-            this.homeButon.Name = "homeButon";
-            this.homeButon.Size = new System.Drawing.Size(235, 43);
-            this.homeButon.TabIndex = 15;
-            this.homeButon.Text = "     Home";
-            this.homeButon.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.homeButon.Click += new System.EventHandler(this.homeButon_Click);
             // 
             // Dashbar
             // 
