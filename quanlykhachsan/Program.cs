@@ -16,7 +16,7 @@ namespace quanlykhachsan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashbar());
+            Application.Run(new Login());
 
         }
     }

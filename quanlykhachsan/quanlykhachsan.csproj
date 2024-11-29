@@ -117,7 +117,17 @@
     <EmbeddedResource Include="Dashbar.resx">
       <DependentUpon>Dashbar.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="DatabaseConect\chitietdata.cs" />
     <Compile Include="DatabaseConect\ConnectDb.cs" />
+    <Compile Include="DatabaseConect\DatPhongData.cs" />
+    <Compile Include="DatabaseConect\KhachHangdb.cs" />
+    <Compile Include="DatabaseConect\PhieuThueData.cs" />
+    <Compile Include="DoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoiMatKhau.Designer.cs">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DatPhongFrom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +194,9 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DoiMatKhau.resx">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DatPhongFrom.resx">
       <DependentUpon>DatPhongFrom.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,6 +230,13 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="MaHoa\Mahoa.cs" />
+    <Compile Include="Model\ChiTietPhieuThueModel.cs" />
+    <Compile Include="Model\DatPhongmodel.cs" />
+    <Compile Include="Model\KhachHangModel.cs" />
+    <Compile Include="Model\LoaiPhongmodel.cs" />
+    <Compile Include="Model\NhanVienmodel.cs" />
+    <Compile Include="Model\Phongmodel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -249,9 +269,11 @@
     <Content Include="image\choose-2_102347.png" />
     <Content Include="image\diet.png" />
     <Content Include="image\duplex-house.png" />
+    <Content Include="image\exchange %281%29.png" />
     <Content Include="image\exit_closethesession_close_6317.png" />
     <Content Include="image\home.png" />
     <Content Include="image\kitchenware_equipment_decor_set_room_interior_kitchen_fork_knife_icon_260144.png" />
+    <Content Include="image\laptop.png" />
     <Content Include="image\living_room_sofa_home_house_icon_231050.png" />
     <Content Include="image\logout.png" />
     <Content Include="image\menu.png" />
@@ -259,6 +281,7 @@
     <Content Include="image\padlock.png" />
     <Content Include="image\payment.png" />
     <Content Include="image\profile-user.png" />
+    <Content Include="image\receptionist.png" />
     <Content Include="image\register.png" />
     <Content Include="image\transfer_man_employee_user_avatar_arrow_refresh_icon_141997.png" />
   </ItemGroup>

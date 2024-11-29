@@ -19,6 +19,7 @@ namespace quanlykhachsan
         public Dashbar()
         {
             InitializeComponent();
+            HidenMenuBar();
             OpenChildForm(new Forms.HomeForm());
 
         }
@@ -61,6 +62,9 @@ namespace quanlykhachsan
         // Hàm để thiết lập chữ trên các button
         private void SetButtonTextVisible(bool isVisible)
         {
+            guna2Button9.Text = isVisible ? "     Đổi mật khẩu" : "";
+            guna2Button8.Text = isVisible ? "     Quản lý" : "";
+            guna2Button7.Text = isVisible ? "     Lễ tân" : "";
             exitBtn.Text = isVisible ? "     Đăng xuất" : "";
             serviceBtn.Text = isVisible ? "     Quản lý dịch vụ" : "";
             userBtn.Text = isVisible ? "     Quản lý nhân viên" : "";
@@ -90,7 +94,7 @@ namespace quanlykhachsan
                 siderbarExpand = true;
             }
         }
-        private void OpenChildForm(Form childFrom)
+        public void OpenChildForm(Form childFrom)
         {
             try
             {
@@ -124,7 +128,33 @@ namespace quanlykhachsan
 
         }
  
-
+        private void HidenMenuBar()
+        {
+            panelLeTan.Visible = false;
+            panelManage.Visible = false;
+        }
+        private void ShowMenubar()
+        {
+            if(panelLeTan.Visible == true)
+            {
+                panelLeTan.Visible = false;
+            }
+            if(panelManage.Visible == true)
+            {
+                panelManage.Visible = false;
+            }
+        }
+        private void ShowSubMenu(Guna2Panel subPanel)
+        {
+            if(subPanel.Visible == false)
+            {
+                ShowMenubar();
+                subPanel.Visible = true;
+            }else
+            {
+                subPanel.Visible = false;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -178,7 +208,9 @@ namespace quanlykhachsan
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            Login login = new Login();
+            login.Show();
         }
 
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
@@ -189,6 +221,47 @@ namespace quanlykhachsan
         private void homeButon_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.HomeForm());
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(panelLeTan);
+        }
+
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(panelManage);
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.PhieuDatPhongForm());
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.DatPhongFrom());
+        }
+
+        private void voteBtn_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.LapPhieuDVForm());
+        }
+
+        private void hoadonBtn_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.LapHoaDon());
+        }
+
+        private void roomBtn_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.QuanLyPhongForm());
+        }
+
+        private void guna2Button9_Click(object sender, EventArgs e)
+        {
+            DoiMatKhau doi = new DoiMatKhau();
+            doi.Show();
         }
     }
 }

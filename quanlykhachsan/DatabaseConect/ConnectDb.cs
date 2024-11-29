@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace quanlykhachsan.DatabaseConect
@@ -7,70 +8,31 @@ namespace quanlykhachsan.DatabaseConect
     {
         private MySqlConnection connection;
 
-        public ConnectDb()
+        public static MySqlConnection GetConnection()
         {
-            string server = "localhost";
-            string database = "hotelmanage";
-            string user = "root";
-            string password = "toan@16804"; // Để trống nếu không có mật khẩu
-            string connectionString = $"Server={server};Database={database};Uid={user};Pwd={password};";
+            string sql = "datasource=localhost;port=3306;username=root;password=123;database=hotelmanage";
 
-            connection = new MySqlConnection(connectionString);
-        }
-
-        // Hàm mở kết nối
-        public void OpenConnection()
-        {
+            MySqlConnection con = new MySqlConnection(sql);
             try
             {
-                if (connection.State == System.Data.ConnectionState.Closed)
+                con.Open();
+            }catch(MySqlException ex)
+            {
+                MessageBox.Show("MySql connection! \n " + ex.Message,"error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            return con;
+        }
+        public static void CloseConnection(MySqlConnection con){
+            if (con != null && con.State == System.Data.ConnectionState.Open)
+            {
+                try
                 {
-                    connection.Open();
-                    Console.WriteLine("Kết nối thành công!");
+                    con.Close();
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi khi mở kết nối: {ex.Message}");
-            }
-        }
-
-        // Hàm đóng kết nối
-        public void CloseConnection()
-        {
-            try
-            {
-                if (connection.State == System.Data.ConnectionState.Open)
+                catch (MySqlException ex)
                 {
-                    connection.Close();
-                    Console.WriteLine("Đã đóng kết nối!");
+                    MessageBox.Show("Error closing connection: \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi khi đóng kết nối: {ex.Message}");
-            }
-        }
-
-        // Lấy đối tượng MySqlConnection
-        public MySqlConnection GetConnection()
-        {
-            return connection;
-        }
-
-        public bool TestConnection()
-        {
-            try
-            {
-                OpenConnection(); // Mở kết nối
-                Console.WriteLine("Kiểm tra kết nối: Thành công!");
-                CloseConnection(); // Đóng kết nối
-                return true; // Kết nối thành công
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Kiểm tra kết nối thất bại: {ex.Message}");
-                return false; // Kết nối thất bại
             }
         }
     }

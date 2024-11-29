@@ -105,6 +105,7 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(119, 186);
             this.guna2Panel1.TabIndex = 3;
+            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // guna2PictureBox1
             // 
@@ -146,6 +147,7 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(119, 186);
             this.guna2Panel2.TabIndex = 4;
+            this.guna2Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
             // guna2PictureBox2
             // 
@@ -187,6 +189,7 @@
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(274, 137);
             this.guna2Panel3.TabIndex = 4;
+            this.guna2Panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel3_Paint);
             // 
             // guna2PictureBox3
             // 
@@ -227,6 +230,7 @@
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(274, 137);
             this.guna2Panel4.TabIndex = 7;
+            this.guna2Panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel4_Paint);
             // 
             // guna2PictureBox7
             // 
@@ -265,6 +269,7 @@
             this.guna2Panel5.Name = "guna2Panel5";
             this.guna2Panel5.Size = new System.Drawing.Size(119, 186);
             this.guna2Panel5.TabIndex = 6;
+            this.guna2Panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel5_Paint);
             // 
             // guna2PictureBox8
             // 
@@ -305,6 +310,7 @@
             this.guna2Panel6.Name = "guna2Panel6";
             this.guna2Panel6.Size = new System.Drawing.Size(119, 186);
             this.guna2Panel6.TabIndex = 5;
+            this.guna2Panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel6_Paint);
             // 
             // guna2PictureBox6
             // 
@@ -345,6 +351,7 @@
             this.guna2Panel7.Name = "guna2Panel7";
             this.guna2Panel7.Size = new System.Drawing.Size(138, 186);
             this.guna2Panel7.TabIndex = 6;
+            this.guna2Panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel7_Paint);
             // 
             // guna2PictureBox4
             // 
@@ -385,6 +392,7 @@
             this.guna2Panel8.Name = "guna2Panel8";
             this.guna2Panel8.Size = new System.Drawing.Size(138, 137);
             this.guna2Panel8.TabIndex = 7;
+            this.guna2Panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel8_Paint);
             // 
             // guna2PictureBox5
             // 
