@@ -10,7 +10,7 @@ namespace quanlykhachsan.DatabaseConect
 
         public static MySqlConnection GetConnection()
         {
-            string sql = "datasource=localhost;port=3306;username=root;password=123;database=hotelmanage";
+            string sql = "datasource=localhost;port=3306;username=root;password=12345678;database=hotelmanage";
 
             MySqlConnection con = new MySqlConnection(sql);
             try
