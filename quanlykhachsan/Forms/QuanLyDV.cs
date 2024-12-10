@@ -91,6 +91,7 @@ namespace quanlykhachsan.Forms
                 {
                     command.ExecuteNonQuery(); // Execute the SQL command
                     MessageBox.Show("Dữ liệu đã được nhập thành công.");
+                    LoadDataIntoDataGridView();
                 }
                 catch (Exception ex)
                 {
@@ -149,8 +150,9 @@ namespace quanlykhachsan.Forms
         private void guna2Button7_Click(object sender, EventArgs e)
         {
             importData();
-            LoadDataIntoDataGridView();
+            
         }
+
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -590,6 +592,7 @@ namespace quanlykhachsan.Forms
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             searchData();
+
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
