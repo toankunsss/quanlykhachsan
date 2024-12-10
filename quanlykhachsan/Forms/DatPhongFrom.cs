@@ -273,7 +273,8 @@ namespace quanlykhachsan.Forms
                 string id = txtCCCD.Text;
                 if (KhachHangdb.SearchIdKhachHang(id) != null)
                 {
-                    Console.WriteLine("khach hang da ton tai! ");
+                    MessageBox.Show("khách hàng đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 }
                 else
                 {
@@ -360,6 +361,10 @@ namespace quanlykhachsan.Forms
                 {
                     cbxGender.SelectedItem = "Nam";
                 }
+            }
+            else
+            {
+                MessageBox.Show("không tìm thấy khách hàng! ","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

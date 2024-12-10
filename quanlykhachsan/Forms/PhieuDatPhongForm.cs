@@ -120,5 +120,30 @@ namespace quanlykhachsan.Forms
             }
 
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            string timkiem = txtTimKiem.Text;
+            string query = $@"
+        SELECT 
+            phieuthue.MaPhieuThue, 
+            phieuthue.MaKH, 
+            chitietphieuthue.MaPhong, 
+            phieuthue.ngayden, 
+            phieuthue.ngaydi 
+        FROM 
+            phieuthue
+        JOIN 
+            chitietphieuthue ON chitietphieuthue.MaPhieuThue = phieuthue.MaPhieuThue
+        JOIN 
+            khachhang ON khachhang.KhCCCD = phieuthue.MaKH
+        WHERE 
+            phieuthue.MaPhieuThue = '{timkiem}' 
+            OR phieuthue.MaKH = '{timkiem}';
+    ";
+            DatPhongData.DisplayAndFill(query, guna2DataGridView1);
+        }
+
+
     }
 }

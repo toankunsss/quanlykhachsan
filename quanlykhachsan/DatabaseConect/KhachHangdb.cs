@@ -14,18 +14,16 @@ namespace quanlykhachsan.DatabaseConect
     {
         public static KhachHangModel SearchIdKhachHang(string id)
         {
-            KhachHangModel khachHang = new KhachHangModel();
+            KhachHangModel khachHang = null; // Khởi tạo là null
             string sql = "SELECT * FROM khachhang WHERE khCCCD = @KhCCCD";
             MySqlConnection con = ConnectDb.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@KhCCCD", MySqlDbType.VarChar).Value = id;
+
             try
             {
-                
-               
-               
-
+                con.Open(); // Đảm bảo mở kết nối trước khi thực hiện
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
@@ -45,18 +43,16 @@ namespace quanlykhachsan.DatabaseConect
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi: {ex.Message}");
-                MessageBox.Show("Không tìm thấy khách hàng cần tìm \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             finally
             {
-                if (con.State == System.Data.ConnectionState.Open)
+                if (con.State == ConnectionState.Open)
                 {
                     con.Close();
                 }
             }
 
-            return khachHang;
+            return khachHang; // Trả về null nếu không tìm thấy
         }
 
         public static void AddKhachHang(KhachHangModel khachHangModel)
