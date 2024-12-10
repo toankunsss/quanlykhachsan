@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using quanlykhachsan.DatabaseConect;
 using quanlykhachsan.Forms;
 using quanlykhachsan.MaHoa;
@@ -16,12 +17,14 @@ namespace quanlykhachsan
 {
     public partial class Login : Form
     {
+        public static String tendangnhap;
         public Login()
         {
             InitializeComponent();
         }
         public static bool CheckLogin(string username, string password)
         {
+            tendangnhap = username;
             // Câu lệnh SQL kiểm tra tài khoản và mật khẩu
             string query = "SELECT COUNT(*) FROM nhanvien WHERE MaNV = @username AND MatKhau = @password";
 
@@ -74,6 +77,11 @@ namespace quanlykhachsan
             {
                 MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

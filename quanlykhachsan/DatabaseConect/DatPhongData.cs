@@ -74,7 +74,7 @@ WHERE NOT EXISTS (
       AND @NgayDen <= phieuthue.NgayDi
       AND @NgayDi >= phieuthue.NgayDen
 )
-AND loaiphong.TenLoai = @LoaiPhong;"; // Filter by room type
+AND loaiphong.TenLoai = @LoaiPhong;";
 
             try
             {

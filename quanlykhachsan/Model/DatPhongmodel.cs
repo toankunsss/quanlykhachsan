@@ -22,7 +22,11 @@ namespace quanlykhachsan.Model
             this.ngayden = ngayden;
             this.ngaydi = ngaydi;
         }
-
+        public DatPhongmodel(DateTime ngayden, DateTime ngaydi)
+        {
+            this.ngayden = ngayden;
+            this.ngaydi = ngaydi;
+        }
         public DatPhongmodel()
         {
         }
