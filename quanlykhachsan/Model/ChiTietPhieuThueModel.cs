@@ -18,7 +18,10 @@ namespace quanlykhachsan.Model
             MaPhong = maPhong;
             MaPhieuDichVu = maPhieuDichVu;
         }
-
+        public ChiTietPhieuThueModel(string maPhong)
+        {
+            MaPhong = maPhong;
+        }
         public ChiTietPhieuThueModel()
         {
         }

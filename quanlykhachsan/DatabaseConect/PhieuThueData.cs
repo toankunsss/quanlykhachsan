@@ -38,17 +38,17 @@ namespace quanlykhachsan.DatabaseConect
         }
         public static void UpdaStudent(DatPhongmodel datPhongmodel, String id)
         {
-            string sql = "UPDATE phieuthue SET MaPhieuThue = @MaPhieuThue, MaKH= @MaKH,ngayden = @ngayden,@ngaydi WHERE MaPhieuThue = @MaPhieuThue";
+            string sql = "UPDATE phieuthue SET ngayden = @ngayden, ngaydi = @ngaydi WHERE MaPhieuThue = @MaPhieuThue;";
             MySqlConnection con = ConnectDb.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("@MaKH", MySqlDbType.VarChar).Value = datPhongmodel.MaKh;
             cmd.Parameters.Add("@ngayden", MySqlDbType.Date).Value = datPhongmodel.ngayden;
             cmd.Parameters.Add("@ngaydi", MySqlDbType.Date).Value = datPhongmodel.ngaydi;
+            cmd.Parameters.Add("@MaPhieuThue", MySqlDbType.VarChar).Value = id;
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Add Successfully. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sửa thành công. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
 
@@ -61,22 +61,18 @@ namespace quanlykhachsan.DatabaseConect
         }
         public static void DeletePhieuThue(String id)
         {
-            string sql = "DELETE FROM phieuthu WHERE MaPhieuThue = @MaPhieuThue";
+            string sql = "DELETE FROM phieuthue WHERE MaPhieuThue = @MaPhieuThue";
             MySqlConnection con = ConnectDb.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("@MaPhieuThu", MySqlDbType.VarChar).Value = id;
+            cmd.Parameters.Add("@MaPhieuThue", MySqlDbType.VarChar).Value = id;  // Sửa tên tham số ở đây
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Add Successfully. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
-
             catch (MySqlException ex)
             {
                 MessageBox.Show("Phiếu thuê cập nhật thất bại: \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             con.Close();
         }
