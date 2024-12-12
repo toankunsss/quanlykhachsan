@@ -25,86 +25,90 @@ namespace quanlykhachsan.Forms
 
         public void importData()
         {
-            // Lấy dữ liệu từ các điều khiển
-            string MaNV = guna2TextBox3.Text;
-            string TenNV = guna2TextBox6.Text;
-
-            // Kiểm tra nếu giá trị CCCD hợp lệ (12 số)
-            string cccdText = guna2TextBox7.Text;
-            if (cccdText.Length != 12 || !cccdText.All(char.IsDigit))
-            {
-                MessageBox.Show("CCCD không hợp lệ. Vui lòng nhập 12 số.");
-                return;
-            }
-            long CCCD = long.Parse(cccdText);
-
-            // Kiểm tra ngày sinh từ DateTimePicker
-            DateTime ngaysinh = guna2DateTimePicker3.Value;
-
-            // Kiểm tra giới tính
-            string GioiTinh = comboBox3.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(GioiTinh))
-            {
-                MessageBox.Show("Vui lòng chọn giới tính.");
-                return;
-            }
-
-            // Kiểm tra số điện thoại hợp lệ (10 số)
-            string soDTText = guna2TextBox2.Text;
-            if (soDTText.Length != 10 || !soDTText.All(char.IsDigit))
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập 10 số.");
-                return;
-            }
-            int SoDT = int.Parse(soDTText);
-
-            // Kiểm tra chức vụ từ ComboBox
-            string ChucVu = comboBox1.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(ChucVu))
-            {
-                MessageBox.Show("Vui lòng chọn chức vụ.");
-                return;
-            }
-
-            // Kiểm tra mật khẩu và yêu cầu mật khẩu phức tạp
-            string MatKhau = guna2TextBox4.Text;
-            if (string.IsNullOrEmpty(MatKhau) ||
-                !MatKhau.Any(char.IsUpper) ||
-                !MatKhau.Any(char.IsDigit) ||
-                !MatKhau.Any(ch => !char.IsLetterOrDigit(ch)))
-            {
-                MessageBox.Show("Mật khẩu không hợp lệ. Vui lòng nhập mật khẩu có ít nhất 1 chữ cái in hoa, 1 số và 1 ký tự đặc biệt.");
-                return;
-            }
-
-            // Mã hóa mật khẩu bằng SHA-256
-            string MatKhauHash = Mahoa.ComputeSHA256Hash(MatKhau);
-
-            // Kiểm tra địa chỉ
-            string DiaChi = guna2TextBox9.Text;
-            if (string.IsNullOrEmpty(DiaChi))
-            {
-                MessageBox.Show("Vui lòng nhập địa chỉ.");
-                return;
-            }
-
-            // Kiểm tra nếu các thông tin cơ bản đều có đầy đủ
-            if (string.IsNullOrEmpty(MaNV) || string.IsNullOrEmpty(TenNV))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ mã nhân viên và tên nhân viên.");
-                return;
-            }
-
-            // Kết nối cơ sở dữ liệu
-            MySqlConnection connection = ConnectDb.GetConnection();
-            if (connection == null)
-            {
-                MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu. Vui lòng kiểm tra lại kết nối.");
-                return;
-            }
+            MySqlConnection connection = null;
 
             try
             {
+                // Lấy dữ liệu từ các điều khiển
+                string MaNV = guna2TextBox3.Text;
+                string TenNV = guna2TextBox6.Text;
+
+                // Kiểm tra nếu giá trị CCCD hợp lệ (12 số)
+                string cccdText = guna2TextBox7.Text;
+                if (cccdText.Length != 12 || !cccdText.All(char.IsDigit))
+                {
+                    MessageBox.Show("CCCD không hợp lệ. Vui lòng nhập 12 số.");
+                    return;
+                }
+                long CCCD = long.Parse(cccdText);
+
+                // Kiểm tra ngày sinh từ DateTimePicker
+                DateTime ngaysinh = guna2DateTimePicker3.Value;
+
+                // Kiểm tra giới tính
+                string GioiTinh = comboBox3.SelectedItem?.ToString();
+                if (string.IsNullOrEmpty(GioiTinh))
+                {
+                    MessageBox.Show("Vui lòng chọn giới tính.");
+                    return;
+                }
+
+                // Kiểm tra số điện thoại hợp lệ (10 số)
+                string soDTText = guna2TextBox2.Text;
+                if (soDTText.Length != 10 || !soDTText.All(char.IsDigit))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập 10 số.");
+                    return;
+                }
+
+                // Chuyển số điện thoại sang kiểu string, tránh kiểu int
+                string SoDT = soDTText;
+
+                // Kiểm tra chức vụ từ ComboBox
+                string ChucVu = comboBox1.SelectedItem?.ToString();
+                if (string.IsNullOrEmpty(ChucVu))
+                {
+                    MessageBox.Show("Vui lòng chọn chức vụ.");
+                    return;
+                }
+
+                // Kiểm tra mật khẩu và yêu cầu mật khẩu phức tạp
+                string MatKhau = guna2TextBox4.Text;
+                if (string.IsNullOrEmpty(MatKhau) ||
+                    !MatKhau.Any(char.IsUpper) ||
+                    !MatKhau.Any(char.IsDigit) ||
+                    !MatKhau.Any(ch => !char.IsLetterOrDigit(ch)))
+                {
+                    MessageBox.Show("Mật khẩu không hợp lệ. Vui lòng nhập mật khẩu có ít nhất 1 chữ cái in hoa, 1 số và 1 ký tự đặc biệt.");
+                    return;
+                }
+
+                // Mã hóa mật khẩu bằng SHA-256
+                string MatKhauHash = Mahoa.ComputeSHA256Hash(MatKhau);
+
+                // Kiểm tra địa chỉ
+                string DiaChi = guna2TextBox9.Text;
+                if (string.IsNullOrEmpty(DiaChi))
+                {
+                    MessageBox.Show("Vui lòng nhập địa chỉ.");
+                    return;
+                }
+
+                // Kiểm tra nếu các thông tin cơ bản đều có đầy đủ
+                if (string.IsNullOrEmpty(MaNV) || string.IsNullOrEmpty(TenNV))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ mã nhân viên và tên nhân viên.");
+                    return;
+                }
+
+                // Kết nối cơ sở dữ liệu
+                connection = ConnectDb.GetConnection();
+                if (connection == null)
+                {
+                    MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu. Vui lòng kiểm tra lại kết nối.");
+                    return;
+                }
+
                 // Kiểm tra trùng mã nhân viên
                 string queryCheck = "SELECT COUNT(*) FROM nhanvien WHERE MaNV = @MaNV";
                 using (var checkCommand = new MySqlCommand(queryCheck, connection))
@@ -136,7 +140,7 @@ namespace quanlykhachsan.Forms
 
                     command.ExecuteNonQuery();
                     MessageBox.Show("Dữ liệu đã được nhập thành công.");
-                    LoadDataIntoDataGridView();
+                    LoadDataIntoDataGridView();  // Cập nhật lại DataGridView sau khi nhập dữ liệu mới
                 }
             }
             catch (MySqlException ex)
@@ -152,9 +156,16 @@ namespace quanlykhachsan.Forms
             finally
             {
                 // Đóng kết nối
-                ConnectDb.CloseConnection(connection);
+                if (connection != null)
+                {
+                    ConnectDb.CloseConnection(connection);
+                }
             }
         }
+
+
+
+
 
 
 
@@ -196,10 +207,7 @@ namespace quanlykhachsan.Forms
 
        
 
-        private void guna2Panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -221,122 +229,141 @@ namespace quanlykhachsan.Forms
         }
 
 
-        private void editData()
+        public void editData()
         {
-            // Lấy dữ liệu từ các điều khiển
-            string MaNV = guna2TextBox3.Text;
-            string TenNV = guna2TextBox6.Text;
-
-            // Kiểm tra nếu giá trị CCCD hợp lệ
-            int CCCD = 0;
-            if (!int.TryParse(guna2TextBox7.Text, out CCCD))
+            try
             {
-                MessageBox.Show("CCCD không hợp lệ. Vui lòng nhập lại.");
-                return;
-            }
+                // Lấy dữ liệu từ các điều khiển
+                string MaNV = guna2TextBox3.Text; // Mã nhân viên (sử dụng chuỗi để giữ số 0 đầu)
+                string TenNV = guna2TextBox6.Text; // Tên nhân viên
 
-            // Kiểm tra ngày sinh từ DateTimePicker
-            DateTime ngaysinh = guna2DateTimePicker3.Value;
+                // Kiểm tra ngày sinh từ DateTimePicker
+                DateTime ngaysinh = guna2DateTimePicker3.Value;
 
-            // Kiểm tra giới tính
-            string GioiTinh = comboBox3.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(GioiTinh))
-            {
-                MessageBox.Show("Vui lòng chọn giới tính.");
-                return;
-            }
-
-            // Kiểm tra số điện thoại hợp lệ
-            int SoDT = 0;
-            if (!int.TryParse(guna2TextBox2.Text, out SoDT))
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập lại.");
-                return;
-            }
-
-            // Kiểm tra chức vụ từ ComboBox
-            string ChucVu = comboBox1.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(ChucVu))
-            {
-                MessageBox.Show("Vui lòng chọn chức vụ.");
-                return;
-            }
-
-            // Kiểm tra mật khẩu và mã hóa mật khẩu trước khi cập nhật
-            string MatKhau = guna2TextBox4.Text;
-            if (string.IsNullOrEmpty(MatKhau))
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu.");
-                return;
-            }
-
-            // Mã hóa mật khẩu bằng SHA-256
-            string MatKhauHash = Mahoa.ComputeSHA256Hash(MatKhau);
-
-            // Kiểm tra địa chỉ
-            string DiaChi = guna2TextBox9.Text;
-            if (string.IsNullOrEmpty(DiaChi))
-            {
-                MessageBox.Show("Vui lòng nhập địa chỉ.");
-                return;
-            }
-
-            // Kiểm tra các trường có hợp lệ không
-            if (string.IsNullOrEmpty(MaNV) || string.IsNullOrEmpty(TenNV))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ mã nhân viên và tên nhân viên.");
-                return;
-            }
-
-            // Kết nối cơ sở dữ liệu
-            MySqlConnection connection = ConnectDb.GetConnection();
-            if (connection == null)
-            {
-                MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu.");
-                return;
-            }
-
-            // Câu lệnh SQL để cập nhật thông tin nhân viên
-            string query = "UPDATE nhanvien SET TenNV = @TenNV, CCCD = @CCCD, NgaySinh = @NgaySinh, GioiTinh = @GioiTinh, " +
-                           "SoDT = @SoDT, ChucVu = @ChucVu, MatKhau = @MatKhau, DiaChi = @DiaChi WHERE MaNV = @MaNV";
-
-            using (var command = new MySqlCommand(query, connection))
-            {
-                // Thêm tham số vào câu lệnh SQL để tránh SQL injection
-                command.Parameters.AddWithValue("@MaNV", MaNV);
-                command.Parameters.AddWithValue("@TenNV", TenNV);
-                command.Parameters.AddWithValue("@CCCD", CCCD);
-                command.Parameters.AddWithValue("@NgaySinh", ngaysinh);
-                command.Parameters.AddWithValue("@GioiTinh", GioiTinh);
-                command.Parameters.AddWithValue("@SoDT", SoDT);
-                command.Parameters.AddWithValue("@ChucVu", ChucVu);
-                command.Parameters.AddWithValue("@MatKhau", MatKhauHash);  // Sử dụng mật khẩu đã mã hóa
-                command.Parameters.AddWithValue("@DiaChi", DiaChi);
-
-                try
+                // Kiểm tra giới tính
+                string GioiTinh = comboBox3.SelectedItem?.ToString();
+                if (string.IsNullOrEmpty(GioiTinh))
                 {
-                    // Thực thi câu lệnh SQL để cập nhật dữ liệu vào cơ sở dữ liệu
+                    MessageBox.Show("Vui lòng chọn giới tính.");
+                    return;
+                }
+
+                // Kiểm tra số điện thoại hợp lệ (10 số)
+                string soDTText = guna2TextBox2.Text;
+                if (string.IsNullOrEmpty(soDTText) || soDTText.Length != 10 || !soDTText.All(char.IsDigit))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập 10 số.");
+                    return;
+                }
+
+                // Lưu số điện thoại dưới dạng chuỗi
+                string SoDT = soDTText;
+
+                // Kiểm tra chức vụ từ ComboBox
+                string ChucVu = comboBox1.SelectedItem?.ToString();
+                if (string.IsNullOrEmpty(ChucVu))
+                {
+                    MessageBox.Show("Vui lòng chọn chức vụ.");
+                    return;
+                }
+
+                // Kiểm tra địa chỉ
+                string DiaChi = guna2TextBox9.Text;
+                if (string.IsNullOrEmpty(DiaChi))
+                {
+                    MessageBox.Show("Vui lòng nhập địa chỉ.");
+                    return;
+                }
+
+                // Kiểm tra mật khẩu mới (nếu có)
+                string MatKhau = guna2TextBox4.Text;
+                string MatKhauHash = null;
+                if (!string.IsNullOrEmpty(MatKhau))
+                {
+                    // Kiểm tra mật khẩu phức tạp
+                    if (!MatKhau.Any(char.IsUpper) ||
+                        !MatKhau.Any(char.IsDigit) ||
+                        !MatKhau.Any(ch => !char.IsLetterOrDigit(ch)))
+                    {
+                        MessageBox.Show("Mật khẩu không hợp lệ. Vui lòng nhập mật khẩu có ít nhất 1 chữ cái in hoa, 1 số và 1 ký tự đặc biệt.");
+                        return;
+                    }
+
+                    // Mã hóa mật khẩu nếu có
+                    MatKhauHash = Mahoa.ComputeSHA256Hash(MatKhau);
+                }
+
+                // Kiểm tra nếu các thông tin cơ bản đều có đầy đủ
+                if (string.IsNullOrEmpty(MaNV) || string.IsNullOrEmpty(TenNV))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ mã nhân viên và tên nhân viên.");
+                    return;
+                }
+
+                // Kết nối cơ sở dữ liệu
+                MySqlConnection connection = ConnectDb.GetConnection();
+                if (connection == null)
+                {
+                    MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu. Vui lòng kiểm tra lại kết nối.");
+                    return;
+                }
+
+                // Cập nhật thông tin nhân viên (cập nhật mật khẩu nếu có)
+                string query = "UPDATE nhanvien SET TenNV = @TenNV, NgaySinh = @NgaySinh, GioiTinh = @GioiTinh, SoDT = @SoDT, ChucVu = @ChucVu, DiaChi = @DiaChi";
+
+                // Nếu mật khẩu không rỗng, thêm cập nhật mật khẩu vào câu lệnh
+                if (!string.IsNullOrEmpty(MatKhauHash))
+                {
+                    query += ", MatKhau = @MatKhau";
+                }
+
+                // Câu lệnh SQL để cập nhật
+                query += " WHERE MaNV = @MaNV";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    // Thêm các tham số vào câu lệnh SQL
+                    command.Parameters.AddWithValue("@MaNV", MaNV);  // Lưu mã nhân viên dưới dạng chuỗi
+                    command.Parameters.AddWithValue("@TenNV", TenNV);
+                    command.Parameters.AddWithValue("@NgaySinh", ngaysinh);
+                    command.Parameters.AddWithValue("@GioiTinh", GioiTinh);
+                    command.Parameters.AddWithValue("@SoDT", SoDT);  // Lưu số điện thoại dưới dạng chuỗi
+                    command.Parameters.AddWithValue("@ChucVu", ChucVu);
+                    command.Parameters.AddWithValue("@DiaChi", DiaChi);
+
+                    // Nếu có mật khẩu mới, thêm tham số mật khẩu vào câu lệnh SQL
+                    if (!string.IsNullOrEmpty(MatKhauHash))
+                    {
+                        command.Parameters.AddWithValue("@MatKhau", MatKhauHash);
+                    }
+
+                    // Thực thi câu lệnh SQL
                     command.ExecuteNonQuery();
                     MessageBox.Show("Dữ liệu đã được cập nhật thành công.");
-                    LoadDataIntoDataGridView();  // Tải lại dữ liệu sau khi cập nhật
+                    LoadDataIntoDataGridView();  // Cập nhật lại DataGridView sau khi sửa dữ liệu
                 }
-                catch (MySqlException ex)
+            }
+            catch (MySqlException ex)
+            {
+                // Xử lý lỗi MySQL
+                MessageBox.Show("Lỗi khi cập nhật dữ liệu vào cơ sở dữ liệu: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các lỗi khác
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+            }
+            finally
+            {
+                // Đóng kết nối
+                MySqlConnection connection = ConnectDb.GetConnection();
+                if (connection != null)
                 {
-                    // Xử lý lỗi MySQL, ví dụ như trùng mã nhân viên, kết nối, v.v.
-                    MessageBox.Show("Lỗi khi cập nhật dữ liệu vào cơ sở dữ liệu: " + ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    // Xử lý các lỗi khác ngoài MySQL
-                    MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
-                }
-                finally
-                {
-                    // Đóng kết nối sau khi thực thi
                     ConnectDb.CloseConnection(connection);
                 }
             }
         }
+
 
         private void updateDatabaseFromDataGridView()
         {
@@ -443,13 +470,7 @@ namespace quanlykhachsan.Forms
 
         private void QuanLyNhanVienForm_Load(object sender, EventArgs e)
         {
-            string[] services = new string[] { "Giặt ủi", "Vệ sinh phòng", "Spa và massage", "Hồ bơi", "Karaoke", "Tắm hơi",
-
-
-                                               "Tổ chức tiệc cưới, sinh nhật, lễ hội"
-
-                };
-            guna2ComboBox1.Items.AddRange(services.ToArray());
+            
             LoadDataIntoDataGridView();
             guna2DataGridView1.CellClick += guna2DataGridView1_CellContentClick;
         }
@@ -739,6 +760,11 @@ namespace quanlykhachsan.Forms
                 string filePath = openFileDialog.FileName;
                 importDataFromExcel(filePath);  // Gọi phương thức để nhập dữ liệu từ Excel
             }
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            LoadDataIntoDataGridView();
         }
     }
 }

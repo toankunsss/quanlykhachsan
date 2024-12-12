@@ -320,11 +320,6 @@ namespace quanlykhachsan.Forms
             }
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            deleteData();
-        }
-
         private void importDataFromExcel(string filePath)
         {
             try
@@ -386,6 +381,14 @@ namespace quanlykhachsan.Forms
                 MessageBox.Show("Lỗi khi nhập dữ liệu từ Excel: " + ex.Message);
             }
         }
+
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            deleteData();
+        }
+
+       
 
 
         private void guna2Button6_Click_1(object sender, EventArgs e)

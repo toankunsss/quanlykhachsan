@@ -192,5 +192,30 @@ WHERE
             // Thông báo thanh toán thành công (hoặc thực hiện các thao tác tiếp theo)
             MessageBox.Show("Hóa đơn đã được thanh toán thành công!", "Thanh toán", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        private void SearchInDataGridView(string keyword)
+        {
+            // Nếu không có từ khóa tìm kiếm, hiển thị tất cả dữ liệu
+            if (string.IsNullOrEmpty(keyword))
+            {
+                display();  // Gọi lại hàm display để hiển thị tất cả dữ liệu
+            }
+            else
+            {
+                // Xây dựng câu lệnh SQL để tìm kiếm
+                string query = $@"
+            SELECT phieuthue.MaKH, phieuthue.MaPhieuThue, khachhang.TenKH 
+            FROM phieuthue, khachhang 
+            WHERE phieuthue.MaKH = khachhang.KhCCCD
+            AND (phieuthue.MaPhieuThue LIKE '%{keyword}%' OR khachhang.TenKH LIKE '%{keyword}%')";
+
+                // Thực hiện truy vấn và cập nhật DataGridView
+                DatPhongData.DisplayAndFill(query, guna2DataGridView1);
+            }
+        }
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            string keyword = ten.Text;
+            SearchInDataGridView(keyword);
+        }
     }
 }
