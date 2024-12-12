@@ -52,13 +52,16 @@ namespace quanlykhachsan
                 roomBtn.Hide();
                 clientBtn.Hide();
                 userBtn.Hide();
-            }
-            else
+            }else if (Login.nhanVienmodel.chucvu == "Quản lý nhân sự")
             {
                 guna2Button7.Hide();
                 roomBtn.Hide();
                 clientBtn.Hide();
                 serviceBtn.Hide();
+
+            }
+            else
+            {
 
             }
         }
@@ -236,9 +239,9 @@ namespace quanlykhachsan
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             Login login = new Login();
-            login.Show();
+            login.ShowDialog();
         }
 
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
