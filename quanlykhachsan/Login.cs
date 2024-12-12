@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using quanlykhachsan.DatabaseConect;
 using quanlykhachsan.Forms;
 using quanlykhachsan.MaHoa;
+using quanlykhachsan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace quanlykhachsan
     public partial class Login : Form
     {
         public static String tendangnhap;
+        public static NhanVienmodel nhanVienmodel;
         public Login()
         {
             InitializeComponent();
@@ -25,24 +27,48 @@ namespace quanlykhachsan
         public static bool CheckLogin(string username, string password)
         {
             tendangnhap = username;
-            // Câu lệnh SQL kiểm tra tài khoản và mật khẩu
-            string query = "SELECT COUNT(*) FROM nhanvien WHERE MaNV = @username AND MatKhau = @password";
+
+            // Câu lệnh SQL kiểm tra tài khoản và mật khẩu và lấy thông tin chức vụ
+            string query = "SELECT MaNV, ChucVu FROM nhanvien WHERE MaNV = @username AND MatKhau = @password";
 
             // Lấy kết nối đến cơ sở dữ liệu
-            MySqlConnection con =ConnectDb.GetConnection();
+            MySqlConnection con = ConnectDb.GetConnection();
 
             // Thực thi câu lệnh SQL
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);
 
-            int result = Convert.ToInt32(cmd.ExecuteScalar()); // Đếm số lượng bản ghi phù hợp
 
-            ConnectDb.CloseConnection(con); // Đóng kết nối
+            // Sử dụng MySqlDataReader để đọc dữ liệu trả về từ cơ sở dữ liệu
+            MySqlDataReader reader = cmd.ExecuteReader();
 
-            // Nếu có ít nhất một bản ghi thì tài khoản và mật khẩu hợp lệ
-            return result > 0;
+            // Kiểm tra nếu có kết quả trả về
+            if (reader.HasRows)
+            {
+                reader.Read();  // Đọc dữ liệu từ kết quả trả về
+
+                // Tạo đối tượng NhanVienmodel chứa thông tin nhân viên
+                nhanVienmodel = new NhanVienmodel
+                {
+                    MaNV = reader.GetString("MaNV"),
+                    chucvu = reader.GetString("ChucVu")  // Lấy thông tin chức vụ
+                };
+
+                reader.Close();  // Đóng MySqlDataReader
+                ConnectDb.CloseConnection(con);  // Đóng kết nối
+
+                return true;  // Đăng nhập thành công
+            }
+            else
+            {
+                reader.Close();  // Đóng MySqlDataReader
+                ConnectDb.CloseConnection(con);  // Đóng kết nối
+
+                return false;  // Đăng nhập thất bại
+            }
         }
+
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
 

@@ -1,4 +1,5 @@
-﻿using quanlykhachsan.DatabaseConect;
+﻿using MySql.Data.MySqlClient;
+using quanlykhachsan.DatabaseConect;
 using quanlykhachsan.Model;
 using System;
 using System.Collections.Generic;
@@ -75,6 +76,18 @@ namespace quanlykhachsan.Forms
             Display();
         }
 
+        public void DeleteDV(string id)
+        {
+            if (string.IsNullOrEmpty(id)) return;
+            string sql = "DELETE FROM phieudichvu WHERE MaPhieuThue = @MaPhieuThue";
+            using (var con = ConnectDb.GetConnection())
+            using (var cmd = new MySqlCommand(sql, con))
+            {
+                cmd.Parameters.Add("@MaPhieuThue", MySqlDbType.VarChar).Value = id;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             List<string> idsToDelete = new List<string>();
@@ -106,8 +119,9 @@ namespace quanlykhachsan.Forms
                     foreach (string id in idsToDelete)
                     {
                         // Xóa các bản ghi từ cơ sở dữ liệu
-                        PhieuThueData.DeletePhieuThue(id); // Giả sử DeletePhieuThue là phương thức xóa trong PhieuThueData
+                        DeleteDV(id);
                         chitietdata.DeleteCTPhieuThue(id); // Giả sử DeleteChiTietPhieuThue là phương thức xóa trong ChiTietPhieuThueData
+                        PhieuThueData.DeletePhieuThue(id); // Giả sử DeletePhieuThue là phương thức xóa trong PhieuThueData
                     }
 
                     // Làm mới lại DataGridView sau khi xóa

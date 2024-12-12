@@ -23,7 +23,6 @@ namespace quanlykhachsan.DatabaseConect
 
             try
             {
-                con.Open(); // Đảm bảo mở kết nối trước khi thực hiện
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
@@ -34,7 +33,7 @@ namespace quanlykhachsan.DatabaseConect
                             tenKH = reader["TenKH"].ToString(),
                             diaChi = reader["DiaChi"].ToString(),
                             gioiTinh = reader["GioiTinh"].ToString(),
-                            soDt = Convert.ToInt64(reader["SoDt"]),
+                            soDt = Convert.ToString(reader["SoDt"]),
                             ngaySinh = Convert.ToDateTime(reader["ngaySinh"])
                         };
                     }

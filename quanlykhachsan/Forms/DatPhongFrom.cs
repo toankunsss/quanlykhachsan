@@ -283,7 +283,7 @@ namespace quanlykhachsan.Forms
                         khCCCd = txtCCCD.Text,
                         tenKH = txtName.Text,
                         diaChi = txtAdress.Text,
-                        soDt = Convert.ToInt64(txtDt.Text),
+                        soDt = txtDt.Text,
                         ngaySinh = dateTimeBorn.Value,
                         gioiTinh = cbxGender.GetItemText(cbxGender.SelectedItem)
                     };
@@ -341,7 +341,7 @@ namespace quanlykhachsan.Forms
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            string id = txtSearch.Text;
+            string id = txtSearch.Text.Trim();
             KhachHangModel khachHangModel = KhachHangdb.SearchIdKhachHang(id);
 
             // Kiểm tra nếu khachHangModel không phải là null

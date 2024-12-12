@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace quanlykhachsan.Model
 {
-    internal class NhanVienmodel
+    public class NhanVienmodel
     {
         public NhanVienmodel() { }
         public String MaNV {  get; set; }

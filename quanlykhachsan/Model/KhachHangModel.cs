@@ -12,10 +12,10 @@ namespace quanlykhachsan.Model
         public String tenKH { get; set; }
         public String diaChi { get; set; }
         public String gioiTinh { get; set;  }
-        public long soDt { get;set; }
+        public string soDt { get;set; }
         public DateTime ngaySinh { get; set; }
 
-        public KhachHangModel(string khCCCd, string tenKH, string diaChi, string gioiTinh, long soDt, DateTime ngaySinh)
+        public KhachHangModel(string khCCCd, string tenKH, string diaChi, string gioiTinh, string soDt, DateTime ngaySinh)
         {
             this.khCCCd = khCCCd;
             this.tenKH = tenKH;

@@ -352,5 +352,10 @@ namespace quanlykhachsan.Forms
             }
         }
 
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            LoaiPhongForm loai = new LoaiPhongForm();
+            loai.ShowDialog();
+        }
     }
 }

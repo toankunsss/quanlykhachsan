@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace quanlykhachsan
@@ -21,6 +22,7 @@ namespace quanlykhachsan
             InitializeComponent();
             HidenMenuBar();
             OpenChildForm(new Forms.HomeForm());
+            phanquyen();
 
         }
 
@@ -33,7 +35,33 @@ namespace quanlykhachsan
         {
 
         }
+        private void phanquyen()
+        {
+            if(Login.nhanVienmodel.chucvu== "Lễ tân")
+            {
+                guna2Button8.Hide();
+            }
+            else if(Login.nhanVienmodel.chucvu == "Quản lí kinh doanh")
+            {
+                guna2Button7.Hide();
+                serviceBtn.Hide();
+                userBtn.Hide();
+            }else if(Login.nhanVienmodel.chucvu == "Quản lí dịch vụ")
+            {
+                guna2Button7.Hide();
+                roomBtn.Hide();
+                clientBtn.Hide();
+                userBtn.Hide();
+            }
+            else
+            {
+                guna2Button7.Hide();
+                roomBtn.Hide();
+                clientBtn.Hide();
+                serviceBtn.Hide();
 
+            }
+        }
 
         private void Siderbar_TimeTick(object sender, EventArgs e)
         {

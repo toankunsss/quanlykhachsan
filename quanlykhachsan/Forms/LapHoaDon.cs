@@ -108,19 +108,20 @@ namespace quanlykhachsan.Forms
 
                 // Hiển thị dữ liệu vào DataGridView hoặc thực hiện các thao tác khác
                 DatPhongData.DisplayAndFill(query, guna2DataGridView3); // guna2DataGridView2 là DataGridView khác để hiển thị kết quả
-                string queryDV = $@"SELECT 
+                string queryDV = $@"
+SELECT 
     dichvu.TenDV, 
     dichvu.DonGia, 
     phieudichvu.ThanhTien, 
     phieudichvu.SoLuong
 FROM 
-    chitietphieuthue
-INNER JOIN 
-    phieudichvu ON chitietphieuthue.MaPhieuDichVu = phieudichvu.MaDV
-INNER JOIN 
-    dichvu ON phieudichvu.MaDV = dichvu.MaDV
+    phieudichvu
+JOIN 
+    dichvu ON dichvu.MaDV = phieudichvu.MaDV
+JOIN 
+    phieuthue ON phieudichvu.MaPhieuThue = phieuthue.MaPhieuThue
 WHERE 
-    chitietphieuthue.MaPhieuThue = '{maPhieuThue}';";
+    phieudichvu.MaPhieuThue = '{maPhieuThue}';";
                 DatPhongData.DisplayAndFill(queryDV, guna2DataGridView2);
                 UpdateSTT();
                 TinhThanhTien();
@@ -215,10 +216,7 @@ WHERE
         }
         private void SearchInDataGridView(string keyword)
         {
-<<<<<<< HEAD
-            // Nếu không có từ khóa tìm kiếm, hiển thị tất cả dữ liệu
-=======
->>>>>>> e6c90d500ec609aa48c569f7906a07002c41d037
+
             if (string.IsNullOrEmpty(keyword))
             {
                 display();  // Gọi lại hàm display để hiển thị tất cả dữ liệu
@@ -226,19 +224,20 @@ WHERE
             else
             {
                 // Xây dựng câu lệnh SQL để tìm kiếm
-                string query = $@"
-<<<<<<< HEAD
-            SELECT phieuthue.MaKH, phieuthue.MaPhieuThue, khachhang.TenKH 
-            FROM phieuthue, khachhang 
-            WHERE phieuthue.MaKH = khachhang.KhCCCD
-=======
-            SELECT phieuthue.MaKH, phieuthue.MaPhieuThue, khachhang.TenKH
-            FROM phieuthue
-            JOIN khachhang ON phieuthue.MaKH = khachhang.KhCCCD
-            JOIN chitietphieuthue ON chitietphieuthue.MaPhieuThue = phieuthue.MaPhieuThue
-            WHERE chitietphieuthue.trangthai IS NULL
->>>>>>> e6c90d500ec609aa48c569f7906a07002c41d037
-            AND (phieuthue.MaPhieuThue LIKE '%{keyword}%' OR khachhang.TenKH LIKE '%{keyword}%')";
+                string query = $@"SELECT 
+    phieuthue.MaKH, 
+    phieuthue.MaPhieuThue, 
+    khachhang.TenKH
+FROM 
+    phieuthue
+JOIN 
+    khachhang ON phieuthue.MaKH = khachhang.KhCCCD
+JOIN 
+    chitietphieuthue ON chitietphieuthue.MaPhieuThue = phieuthue.MaPhieuThue
+WHERE 
+    chitietphieuthue.trangthai IS NULL
+    AND (phieuthue.MaPhieuThue LIKE '%{keyword}%' OR khachhang.TenKH LIKE '%{keyword}%');
+";
 
                 // Thực hiện truy vấn và cập nhật DataGridView
                 DatPhongData.DisplayAndFill(query, guna2DataGridView1);

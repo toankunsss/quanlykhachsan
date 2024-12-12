@@ -14,15 +14,14 @@ namespace quanlykhachsan.DatabaseConect
     {
         public static void AddChiTiet(ChiTietPhieuThueModel chiTietPhieuThue)
         {
-            string sql = "INSERT INTO chitietphieuthue VALUE (@MaPhieuThue,@MaPhong,@MaPhieuDichVu)";
+            string sql = "INSERT INTO chitietphieuthue VALUE (@MaPhieuThue,@MaPhong,@MaPhieuDichVu,@trangthai)";
             MySqlConnection con = ConnectDb.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@MaPhieuThue", MySqlDbType.VarChar).Value = chiTietPhieuThue.MaPhieuThue;
             cmd.Parameters.Add("@MaPhong", MySqlDbType.VarChar).Value = chiTietPhieuThue.MaPhong;
             cmd.Parameters.Add("@MaPhieuDichVu", MySqlDbType.VarChar).Value = chiTietPhieuThue.MaPhieuDichVu;
-
-
+            cmd.Parameters.Add("@trangthai", MySqlDbType.VarChar).Value = null;
             try
             {
                 cmd.ExecuteNonQuery();
