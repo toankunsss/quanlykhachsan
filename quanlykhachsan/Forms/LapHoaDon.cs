@@ -1,8 +1,10 @@
-﻿using quanlykhachsan.DatabaseConect;
+﻿using MySql.Data.MySqlClient;
+using quanlykhachsan.DatabaseConect;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,7 +22,7 @@ namespace quanlykhachsan.Forms
         }
         private void display()
         {
-            DatPhongData.DisplayAndFill("select phieuthue.MaKH, phieuthue.MaPhieuThue, khachhang.TenKH from phieuthue , khachhang where phieuthue.MaKH=khachhang.KhCCCD;", guna2DataGridView1);
+            DatPhongData.DisplayAndFill("SELECT phieuthue.MaKH, phieuthue.MaPhieuThue, khachhang.TenKH\r\nFROM phieuthue\r\nJOIN khachhang ON phieuthue.MaKH = khachhang.KhCCCD\r\nJOIN chitietphieuthue ON chitietphieuthue.MaPhieuThue = phieuthue.MaPhieuThue\r\nWHERE chitietphieuthue.trangthai IS NULL;", guna2DataGridView1);
 
         }
         private void TinhTongTien()
@@ -148,6 +150,21 @@ WHERE
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            if (guna2DataGridView1.SelectedRows.Count > 0) // Kiểm tra xem có hàng nào được chọn không
+            {
+                string maPhieuThue = guna2DataGridView1.SelectedRows[0].Cells["MaPhieuThue"].Value.ToString();
+                string updateQuery = "UPDATE chitietphieuthue SET trangthai = 'OK' WHERE MaPhieuThue = @MaPhieuThue";
+
+                using (MySqlConnection connection = ConnectDb.GetConnection())
+                using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@MaPhieuThue", maPhieuThue);
+                    command.ExecuteNonQuery();
+                }
+
+                display(); // Làm mới DataGridView sau khi cập nhật
+            }
+
             List<string> danhSachDichVu = new List<string>();
             List<int> soLuongDichVu = new List<int>();
             List<double> thanhTienDichVu = new List<double>();
@@ -184,17 +201,24 @@ WHERE
 
             // Hiển thị tổng tiền lên TextBox với định dạng tiền tệ và đơn vị VNĐ
             txtTongTien.Text = totalAmount.ToString("N0") + " VNĐ"; // Định dạng tiền tệ
-
+            // thay đổi trạng thái của chitietphieu
+            //string sql = $@"UPDATE `hotelmanage`.`chitietphieuthue` SET `trangthai` = 'OK' WHERE (`MaPhieuThue` = '{maphieu}')";
             // Truyền dữ liệu vào form Hóa Đơn và hiển thị
-            hoadon hoaDonForm = new hoadon(danhSachDichVu, soLuongDichVu, thanhTienDichVu, totalAmount,tienphong);
-            hoaDonForm.Show();
+            if (guna2CheckBox1.Checked)
+            {
+                hoadon hoaDonForm = new hoadon(danhSachDichVu, soLuongDichVu, thanhTienDichVu, totalAmount, tienphong);
+                hoaDonForm.Show();
+            }
 
-            // Thông báo thanh toán thành công (hoặc thực hiện các thao tác tiếp theo)
+            // Thông báo thanh toán thành công 
             MessageBox.Show("Hóa đơn đã được thanh toán thành công!", "Thanh toán", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void SearchInDataGridView(string keyword)
         {
+<<<<<<< HEAD
             // Nếu không có từ khóa tìm kiếm, hiển thị tất cả dữ liệu
+=======
+>>>>>>> e6c90d500ec609aa48c569f7906a07002c41d037
             if (string.IsNullOrEmpty(keyword))
             {
                 display();  // Gọi lại hàm display để hiển thị tất cả dữ liệu
@@ -203,9 +227,17 @@ WHERE
             {
                 // Xây dựng câu lệnh SQL để tìm kiếm
                 string query = $@"
+<<<<<<< HEAD
             SELECT phieuthue.MaKH, phieuthue.MaPhieuThue, khachhang.TenKH 
             FROM phieuthue, khachhang 
             WHERE phieuthue.MaKH = khachhang.KhCCCD
+=======
+            SELECT phieuthue.MaKH, phieuthue.MaPhieuThue, khachhang.TenKH
+            FROM phieuthue
+            JOIN khachhang ON phieuthue.MaKH = khachhang.KhCCCD
+            JOIN chitietphieuthue ON chitietphieuthue.MaPhieuThue = phieuthue.MaPhieuThue
+            WHERE chitietphieuthue.trangthai IS NULL
+>>>>>>> e6c90d500ec609aa48c569f7906a07002c41d037
             AND (phieuthue.MaPhieuThue LIKE '%{keyword}%' OR khachhang.TenKH LIKE '%{keyword}%')";
 
                 // Thực hiện truy vấn và cập nhật DataGridView
