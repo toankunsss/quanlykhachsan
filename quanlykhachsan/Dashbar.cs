@@ -25,16 +25,6 @@ namespace quanlykhachsan
             phanquyen();
 
         }
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void phanquyen()
         {
             if(Login.nhanVienmodel.chucvu== "Lễ tân")
@@ -293,6 +283,11 @@ namespace quanlykhachsan
         {
             DoiMatKhau doi = new DoiMatKhau();
             doi.Show();
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.Form1());
         }
     }
 }

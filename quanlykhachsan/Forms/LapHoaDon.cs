@@ -149,11 +149,14 @@ WHERE
             }
         }
 
+
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            string maPhieuThue = ""; // Khai báo maPhieuThue trước
+
             if (guna2DataGridView1.SelectedRows.Count > 0) // Kiểm tra xem có hàng nào được chọn không
             {
-                string maPhieuThue = guna2DataGridView1.SelectedRows[0].Cells["MaPhieuThue"].Value.ToString();
+                maPhieuThue = guna2DataGridView1.SelectedRows[0].Cells["MaPhieuThue"].Value.ToString();
                 string updateQuery = "UPDATE chitietphieuthue SET trangthai = 'OK' WHERE MaPhieuThue = @MaPhieuThue";
 
                 using (MySqlConnection connection = ConnectDb.GetConnection())
@@ -189,21 +192,23 @@ WHERE
                     totalAmount += thanhTien;
                 }
             }
+
             // Lấy thông tin phòng từ DataGridView3 (Phòng)
-            double tienphong=0;
+            double tienphong = 0;
             foreach (DataGridViewRow row in guna2DataGridView3.Rows)
             {
                 if (row.Cells["ThanhTien1"].Value != null)
                 {
                     tienphong = Convert.ToDouble(row.Cells["ThanhTien1"].Value);
-                    totalAmount += Convert.ToDouble(row.Cells["ThanhTien1"].Value);  // Thêm thành tiền phòng vào tổng tiền
+                    totalAmount += tienphong;  // Thêm thành tiền phòng vào tổng tiền
                 }
             }
 
+            ThemHoaDon(maPhieuThue, totalAmount); // Gọi phương thức với maPhieuThue đã khai báo
+
             // Hiển thị tổng tiền lên TextBox với định dạng tiền tệ và đơn vị VNĐ
             txtTongTien.Text = totalAmount.ToString("N0") + " VNĐ"; // Định dạng tiền tệ
-            // thay đổi trạng thái của chitietphieu
-            //string sql = $@"UPDATE `hotelmanage`.`chitietphieuthue` SET `trangthai` = 'OK' WHERE (`MaPhieuThue` = '{maphieu}')";
+
             // Truyền dữ liệu vào form Hóa Đơn và hiển thị
             if (guna2CheckBox1.Checked)
             {
@@ -211,9 +216,10 @@ WHERE
                 hoaDonForm.Show();
             }
 
-            // Thông báo thanh toán thành công 
+            // Thông báo thanh toán thành công
             MessageBox.Show("Hóa đơn đã được thanh toán thành công!", "Thanh toán", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         private void SearchInDataGridView(string keyword)
         {
 
@@ -248,5 +254,54 @@ WHERE
             string keyword = ten.Text;
             SearchInDataGridView(keyword);
         }
+        private void ThemHoaDon(string maPhieuThue, double tongTien)
+        {
+            using (MySqlConnection con = ConnectDb.GetConnection())
+            {
+                try
+                {
+                    // Câu truy vấn lấy thời gian từ bảng phieuthue
+                    string queryLayThoiGian = "SELECT NgayDi FROM phieuthue WHERE MaPhieuThue = @MaPhieuThue";
+
+                    // Biến lưu thời gian
+                    DateTime thoiGian;
+
+                    // Lấy thời gian
+                    using (MySqlCommand cmdLayThoiGian = new MySqlCommand(queryLayThoiGian, con))
+                    {
+                        cmdLayThoiGian.Parameters.AddWithValue("@MaPhieuThue", maPhieuThue);
+                        object result = cmdLayThoiGian.ExecuteScalar();
+                        if (result != null)
+                        {
+                            thoiGian = Convert.ToDateTime(result);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy thời gian NgayDi cho mã phiếu thuê này!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    // Câu truy vấn chèn dữ liệu vào bảng hoadon
+                    string queryInsert = "INSERT INTO hoadon (MaPhieuThue, TongTien, ngayThanhtoan) VALUES (@MaPhieuThue, @TongTien, @ThoiGian)";
+
+                    // Thực thi chèn dữ liệu
+                    using (MySqlCommand cmdInsert = new MySqlCommand(queryInsert, con))
+                    {
+                        cmdInsert.Parameters.AddWithValue("@MaPhieuThue", maPhieuThue);
+                        cmdInsert.Parameters.AddWithValue("@TongTien", tongTien);
+                        cmdInsert.Parameters.AddWithValue("@ThoiGian", thoiGian);
+                        cmdInsert.ExecuteNonQuery();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi chèn hóa đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
+
+
 }

@@ -208,19 +208,6 @@ namespace quanlykhachsan.Forms
                 return;
             }
 
-            // Kiểm tra ngày đi
-            if (dateTimeTo.Value == DateTimePicker.MinimumDateTime)
-            {
-                MessageBox.Show("Vui lòng chọn ngày đi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dateTimeTo.Focus();
-                return;
-            }
-            else if (dateTimeTo.Value <= dateTimeFr.Value)
-            {
-                MessageBox.Show("Ngày đi phải lớn hơn ngày đến.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dateTimeTo.Focus();
-                return;
-            }
 
             // Kiểm tra loại phòng
             if (string.IsNullOrWhiteSpace(txtLPhong.Text))
@@ -329,6 +316,20 @@ namespace quanlykhachsan.Forms
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             FillMaPhongCbx();
+
+            // Kiểm tra ngày đi
+            if (dateTimeTo.Value == DateTimePicker.MinimumDateTime)
+            {
+                MessageBox.Show("Vui lòng chọn ngày đi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimeTo.Focus();
+                return;
+            }
+            else if (dateTimeTo.Value <= dateTimeFr.Value)
+            {
+                MessageBox.Show("Ngày đi phải lớn hơn ngày đến.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimeTo.Focus();
+                return;
+            }
 
 
 

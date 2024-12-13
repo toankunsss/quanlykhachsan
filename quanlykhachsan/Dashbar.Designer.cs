@@ -52,6 +52,7 @@
             this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.homeButon = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             this.sliderContainer.SuspendLayout();
@@ -74,10 +75,9 @@
             this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
             this.exitBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.exitBtn.ImageSize = new System.Drawing.Size(25, 25);
-            this.exitBtn.Location = new System.Drawing.Point(0, 674);
-            this.exitBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exitBtn.Location = new System.Drawing.Point(0, 541);
             this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(313, 46);
+            this.exitBtn.Size = new System.Drawing.Size(235, 37);
             this.exitBtn.TabIndex = 14;
             this.exitBtn.Text = "     Đăng xuất";
             this.exitBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -99,9 +99,8 @@
             this.serviceBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.serviceBtn.ImageSize = new System.Drawing.Size(25, 25);
             this.serviceBtn.Location = new System.Drawing.Point(0, 0);
-            this.serviceBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.serviceBtn.Name = "serviceBtn";
-            this.serviceBtn.Size = new System.Drawing.Size(313, 46);
+            this.serviceBtn.Size = new System.Drawing.Size(235, 37);
             this.serviceBtn.TabIndex = 13;
             this.serviceBtn.Text = "     Quản lý dịch vụ";
             this.serviceBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -122,10 +121,9 @@
             this.userBtn.Image = ((System.Drawing.Image)(resources.GetObject("userBtn.Image")));
             this.userBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.userBtn.ImageSize = new System.Drawing.Size(25, 25);
-            this.userBtn.Location = new System.Drawing.Point(0, 46);
-            this.userBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.userBtn.Location = new System.Drawing.Point(0, 37);
             this.userBtn.Name = "userBtn";
-            this.userBtn.Size = new System.Drawing.Size(313, 46);
+            this.userBtn.Size = new System.Drawing.Size(235, 37);
             this.userBtn.TabIndex = 12;
             this.userBtn.Text = "     Quản lý nhân viên";
             this.userBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -146,10 +144,9 @@
             this.clientBtn.Image = ((System.Drawing.Image)(resources.GetObject("clientBtn.Image")));
             this.clientBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.clientBtn.ImageSize = new System.Drawing.Size(25, 25);
-            this.clientBtn.Location = new System.Drawing.Point(0, 141);
-            this.clientBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clientBtn.Location = new System.Drawing.Point(0, 114);
             this.clientBtn.Name = "clientBtn";
-            this.clientBtn.Size = new System.Drawing.Size(313, 37);
+            this.clientBtn.Size = new System.Drawing.Size(235, 30);
             this.clientBtn.TabIndex = 11;
             this.clientBtn.Text = "     Quản lý khách";
             this.clientBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -162,9 +159,8 @@
             this.guna2Panel2.Controls.Add(this.menuButton);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(313, 75);
+            this.guna2Panel2.Size = new System.Drawing.Size(235, 61);
             this.guna2Panel2.TabIndex = 2;
             this.guna2Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
@@ -173,10 +169,9 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(83, 28);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(62, 23);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(57, 27);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(47, 22);
             this.guna2HtmlLabel2.TabIndex = 15;
             this.guna2HtmlLabel2.Text = "Menu";
             // 
@@ -185,10 +180,9 @@
             this.menuButton.BackColor = System.Drawing.Color.Transparent;
             this.menuButton.Image = ((System.Drawing.Image)(resources.GetObject("menuButton.Image")));
             this.menuButton.ImageRotate = 0F;
-            this.menuButton.Location = new System.Drawing.Point(8, 21);
-            this.menuButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menuButton.Location = new System.Drawing.Point(6, 17);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(37, 41);
+            this.menuButton.Size = new System.Drawing.Size(28, 33);
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.menuButton.TabIndex = 0;
             this.menuButton.TabStop = false;
@@ -204,14 +198,14 @@
             // 
             this.panelDesktopRFoot.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panelDesktopRFoot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopRFoot.Location = new System.Drawing.Point(313, 0);
-            this.panelDesktopRFoot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelDesktopRFoot.Location = new System.Drawing.Point(235, 0);
             this.panelDesktopRFoot.Name = "panelDesktopRFoot";
-            this.panelDesktopRFoot.Size = new System.Drawing.Size(1080, 720);
+            this.panelDesktopRFoot.Size = new System.Drawing.Size(810, 621);
             this.panelDesktopRFoot.TabIndex = 3;
             // 
             // sliderContainer
             // 
+            this.sliderContainer.Controls.Add(this.guna2Button1);
             this.sliderContainer.Controls.Add(this.exitBtn);
             this.sliderContainer.Controls.Add(this.guna2Button9);
             this.sliderContainer.Controls.Add(this.panelManage);
@@ -226,11 +220,10 @@
             this.sliderContainer.FillColor3 = System.Drawing.Color.Red;
             this.sliderContainer.FillColor4 = System.Drawing.Color.LightCoral;
             this.sliderContainer.Location = new System.Drawing.Point(0, 0);
-            this.sliderContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.sliderContainer.MaximumSize = new System.Drawing.Size(313, 123076);
-            this.sliderContainer.MinimumSize = new System.Drawing.Size(53, 670);
+            this.sliderContainer.MaximumSize = new System.Drawing.Size(235, 99999);
+            this.sliderContainer.MinimumSize = new System.Drawing.Size(40, 544);
             this.sliderContainer.Name = "sliderContainer";
-            this.sliderContainer.Size = new System.Drawing.Size(313, 720);
+            this.sliderContainer.Size = new System.Drawing.Size(235, 621);
             this.sliderContainer.TabIndex = 1;
             // 
             // guna2Button9
@@ -248,10 +241,9 @@
             this.guna2Button9.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button9.Image")));
             this.guna2Button9.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button9.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button9.Location = new System.Drawing.Point(0, 628);
-            this.guna2Button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button9.Location = new System.Drawing.Point(0, 504);
             this.guna2Button9.Name = "guna2Button9";
-            this.guna2Button9.Size = new System.Drawing.Size(313, 46);
+            this.guna2Button9.Size = new System.Drawing.Size(235, 37);
             this.guna2Button9.TabIndex = 21;
             this.guna2Button9.Text = "     Đổi mật khẩu";
             this.guna2Button9.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -265,10 +257,9 @@
             this.panelManage.Controls.Add(this.userBtn);
             this.panelManage.Controls.Add(this.serviceBtn);
             this.panelManage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelManage.Location = new System.Drawing.Point(0, 437);
-            this.panelManage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelManage.Location = new System.Drawing.Point(0, 355);
             this.panelManage.Name = "panelManage";
-            this.panelManage.Size = new System.Drawing.Size(313, 191);
+            this.panelManage.Size = new System.Drawing.Size(235, 149);
             this.panelManage.TabIndex = 16;
             // 
             // roomBtn
@@ -286,10 +277,9 @@
             this.roomBtn.Image = ((System.Drawing.Image)(resources.GetObject("roomBtn.Image")));
             this.roomBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.roomBtn.ImageSize = new System.Drawing.Size(25, 25);
-            this.roomBtn.Location = new System.Drawing.Point(0, 92);
-            this.roomBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roomBtn.Location = new System.Drawing.Point(0, 74);
             this.roomBtn.Name = "roomBtn";
-            this.roomBtn.Size = new System.Drawing.Size(313, 49);
+            this.roomBtn.Size = new System.Drawing.Size(235, 40);
             this.roomBtn.TabIndex = 15;
             this.roomBtn.Text = "     Quản lý phòng";
             this.roomBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -310,10 +300,9 @@
             this.guna2Button8.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button8.Image")));
             this.guna2Button8.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button8.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button8.Location = new System.Drawing.Point(0, 379);
-            this.guna2Button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button8.Location = new System.Drawing.Point(0, 308);
             this.guna2Button8.Name = "guna2Button8";
-            this.guna2Button8.Size = new System.Drawing.Size(313, 58);
+            this.guna2Button8.Size = new System.Drawing.Size(235, 47);
             this.guna2Button8.TabIndex = 20;
             this.guna2Button8.Text = "     Quản lý";
             this.guna2Button8.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -327,10 +316,9 @@
             this.panelLeTan.Controls.Add(this.bookingButton);
             this.panelLeTan.Controls.Add(this.votesBKBtn);
             this.panelLeTan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLeTan.Location = new System.Drawing.Point(0, 191);
-            this.panelLeTan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLeTan.Location = new System.Drawing.Point(0, 155);
             this.panelLeTan.Name = "panelLeTan";
-            this.panelLeTan.Size = new System.Drawing.Size(313, 188);
+            this.panelLeTan.Size = new System.Drawing.Size(235, 153);
             this.panelLeTan.TabIndex = 19;
             // 
             // hoadonBtn
@@ -348,10 +336,9 @@
             this.hoadonBtn.Image = ((System.Drawing.Image)(resources.GetObject("hoadonBtn.Image")));
             this.hoadonBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.hoadonBtn.ImageSize = new System.Drawing.Size(25, 25);
-            this.hoadonBtn.Location = new System.Drawing.Point(0, 133);
-            this.hoadonBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hoadonBtn.Location = new System.Drawing.Point(0, 108);
             this.hoadonBtn.Name = "hoadonBtn";
-            this.hoadonBtn.Size = new System.Drawing.Size(313, 48);
+            this.hoadonBtn.Size = new System.Drawing.Size(235, 39);
             this.hoadonBtn.TabIndex = 15;
             this.hoadonBtn.Text = "     Lập hóa đơn";
             this.hoadonBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -372,10 +359,9 @@
             this.voteBtn.Image = ((System.Drawing.Image)(resources.GetObject("voteBtn.Image")));
             this.voteBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.voteBtn.ImageSize = new System.Drawing.Size(25, 25);
-            this.voteBtn.Location = new System.Drawing.Point(0, 84);
-            this.voteBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.voteBtn.Location = new System.Drawing.Point(0, 68);
             this.voteBtn.Name = "voteBtn";
-            this.voteBtn.Size = new System.Drawing.Size(313, 49);
+            this.voteBtn.Size = new System.Drawing.Size(235, 40);
             this.voteBtn.TabIndex = 15;
             this.voteBtn.Text = "     Lập phiếu dịch vụ";
             this.voteBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -396,10 +382,9 @@
             this.bookingButton.Image = ((System.Drawing.Image)(resources.GetObject("bookingButton.Image")));
             this.bookingButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bookingButton.ImageSize = new System.Drawing.Size(25, 25);
-            this.bookingButton.Location = new System.Drawing.Point(0, 42);
-            this.bookingButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bookingButton.Location = new System.Drawing.Point(0, 34);
             this.bookingButton.Name = "bookingButton";
-            this.bookingButton.Size = new System.Drawing.Size(313, 42);
+            this.bookingButton.Size = new System.Drawing.Size(235, 34);
             this.bookingButton.TabIndex = 17;
             this.bookingButton.Text = "     Đặt phòng";
             this.bookingButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -421,9 +406,8 @@
             this.votesBKBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.votesBKBtn.ImageSize = new System.Drawing.Size(25, 25);
             this.votesBKBtn.Location = new System.Drawing.Point(0, 0);
-            this.votesBKBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.votesBKBtn.Name = "votesBKBtn";
-            this.votesBKBtn.Size = new System.Drawing.Size(313, 42);
+            this.votesBKBtn.Size = new System.Drawing.Size(235, 34);
             this.votesBKBtn.TabIndex = 18;
             this.votesBKBtn.Text = "     Phiếu đặt phòng";
             this.votesBKBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -444,10 +428,9 @@
             this.guna2Button7.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button7.Image")));
             this.guna2Button7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button7.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button7.Location = new System.Drawing.Point(0, 133);
-            this.guna2Button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Button7.Location = new System.Drawing.Point(0, 108);
             this.guna2Button7.Name = "guna2Button7";
-            this.guna2Button7.Size = new System.Drawing.Size(313, 58);
+            this.guna2Button7.Size = new System.Drawing.Size(235, 47);
             this.guna2Button7.TabIndex = 17;
             this.guna2Button7.Text = "     Lễ tân";
             this.guna2Button7.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -468,10 +451,9 @@
             this.homeButon.Image = ((System.Drawing.Image)(resources.GetObject("homeButon.Image")));
             this.homeButon.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.homeButon.ImageSize = new System.Drawing.Size(25, 25);
-            this.homeButon.Location = new System.Drawing.Point(0, 75);
-            this.homeButon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.homeButon.Location = new System.Drawing.Point(0, 61);
             this.homeButon.Name = "homeButon";
-            this.homeButon.Size = new System.Drawing.Size(313, 58);
+            this.homeButon.Size = new System.Drawing.Size(235, 47);
             this.homeButon.TabIndex = 16;
             this.homeButon.Text = "     Home";
             this.homeButon.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -485,14 +467,36 @@
             this.guna2HtmlLabel1.TabIndex = 1;
             this.guna2HtmlLabel1.Text = null;
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2Button1.Location = new System.Drawing.Point(0, 578);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(235, 37);
+            this.guna2Button1.TabIndex = 22;
+            this.guna2Button1.Text = "    Thống kê";
+            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
+            // 
             // Dashbar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1393, 720);
+            this.ClientSize = new System.Drawing.Size(1045, 621);
             this.Controls.Add(this.panelDesktopRFoot);
             this.Controls.Add(this.sliderContainer);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Dashbar";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -535,5 +539,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button8;
         private Guna.UI2.WinForms.Guna2Panel panelLeTan;
         private Guna.UI2.WinForms.Guna2Button guna2Button9;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
